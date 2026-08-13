@@ -1,0 +1,16 @@
+import express from "express";
+import dotenv from "dotenv";
+import errorHandler from "./middlewares/errorhandler.js";
+import cartRoutes from "./routes/cartroutes.js";
+import orderRoutes from "./routes/orderroutes.js";
+import userRoutes from "./routes/userroutes.js";
+import productRoutes from "./routes/productroutes.js";
+const app = express();
+dotenv.config();
+app.use(express.json());
+app.use("/ecommerce/cart", cartRoutes);
+app.use("/ecommerce/order", orderRoutes);
+app.use("/ecommerce/user", userRoutes);
+app.use("/ecommerce/product", productRoutes);
+app.use(errorHandler);
+export default app;
